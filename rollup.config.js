@@ -1,42 +1,28 @@
-import typescript from 'rollup-plugin-typescript2'
-import commonjs from 'rollup-plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external'
+const createConfig = require('./rollup.config.main')
+const pkg = require('./package.json')
 
-import postcss from 'rollup-plugin-postcss'
-import resolve from 'rollup-plugin-node-resolve'
-import url from 'rollup-plugin-url'
-import svgr from '@svgr/rollup'
+const { lstatSync, readdirSync } = require('fs')
+const { join } = require('path')
 
-import pkg from './package.json'
+const removeExt = file => file.replace(/\.[^.]+$/, '')
 
-export default {
-  input: 'src/index.ts',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      exports: 'named',
-      sourcemap: true
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      exports: 'named',
-      sourcemap: true
-    }
-  ],
-  plugins: [
-    external(),
-    postcss({
-      modules: true
-    }),
-    url({ exclude: ['**/*.svg'] }),
-    svgr(),
-    resolve(),
-    typescript({
-      rollupCommonJSResolveHack: true,
-      clean: true
-    }),
-    commonjs()
-  ]
+const isDirectory = source => lstatSync(source).isDirectory()
+
+const getIndex = dir =>
+  join(dir, readdirSync(dir).find(file => /^index/.test(file)))
+
+const getFiles = dir => {
+  console.log('XXXX', dir)
+  return readdirSync(dir)
+    .filter(file => !/^_/.test(file))
+    .reduce((acc, file) => {
+      const path = join(dir, file)
+      const finalPath = isDirectory(path) ? getIndex(path) : path
+      return {
+        ...acc,
+        [removeExt(file)]: finalPath
+      }
+    }, {})
 }
+
+export default createConfig({ pkg, input: 'src/index.ts', umd: true })

@@ -13,3 +13,4 @@ Thumbs.db
 yarn.lock
 stats.json
 .env
+ts
