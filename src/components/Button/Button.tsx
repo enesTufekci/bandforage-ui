@@ -1,60 +1,88 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import is from 'typescript-styled-is'
 import { space, SpaceProps, themeGet } from 'styled-system'
 import { themeColors, convertSize, applyElevation } from '../../utils/theme'
-import { ThemeVariants, ThemeSize, Elevation } from '../../types/theme'
+import { ThemeSize, Elevation, ButtonVariants } from '../../types/theme'
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<{}>,
     SpaceProps {
-  variant: ThemeVariants
   size: ThemeSize
   elevation: Elevation
+  tag: boolean
 }
 
-const bgColorOrBorder = ({ variant }: ButtonProps) => {
-  console.log(variant)
-  if (variant === 'info') {
-    return () => 'border-color'
-  }
-  return () => 'background-color'
-}
-
-const ButtonStyled = styled.button<ButtonProps>`
+const ButtonBase = styled.button<ButtonProps>`
   ${space}
   ${applyElevation}
+  min-width: ${themeGet('space.6')};
+  ${is('tag')`
+    padding: ${themeGet('space.1')} ${themeGet('space.2')};
+    min-width: auto;
+    font-weight: 300;
+  `}
   cursor: pointer;
   border: none;
   outline: none;
   border-radius: 3px;
-  ${bgColorOrBorder}: ${({ variant }) => themeColors(variant)};
   color: white;
-  min-width: ${themeGet('space.6')};
   transition: 0.3s;
   &:active {
     box-shadow: none;
   }
+`
+
+const PrimaryButton = styled(ButtonBase)`
+  background-color: ${themeColors('primary')};
   &:hover {
-    ${bgColorOrBorder}: ${({ variant }) => themeColors(variant, 'Darkened')};
+    background-color: ${themeColors('primary', 'Darkened')};
+  }
+`
+const SecondaryButton = styled(ButtonBase)`
+  background-color: ${themeColors('secondary')};
+  &:hover {
+    background-color: ${themeColors('secondary', 'Darkened')};
+  }
+`
+const InfoButton = styled(ButtonBase)`
+  border: 2px solid ${themeColors('primary')};
+  color: ${themeColors('primary')};
+  &:hover {
+    border: 2px solid ${themeColors('primary', 'Darkened')};
   }
 `
 
-const Button: React.FC<Partial<ButtonProps>> = ({
+const CleanButton = styled(ButtonBase)`
+  border: none;
+  background: none;
+  box-shadow: none;
+  color: ${themeColors('primary')};
+  &:hover {
+    color: ${themeColors('primary', 'Darkened')};
+  }
+`
+
+const BUTTONS: { [key in ButtonVariants]: React.ReactType } = {
+  ['primary']: PrimaryButton,
+  ['secondary']: SecondaryButton,
+  ['info']: InfoButton,
+  ['clean']: CleanButton
+}
+
+const Button: React.FC<Partial<ButtonProps> & { variant?: ButtonVariants }> = ({
   variant = 'primary',
   size = 'md',
   elevation = 1,
+  tag = false,
   children,
   ...rest
-}) => (
-  <ButtonStyled
-    elevation={elevation}
-    py={convertSize(size)}
-    size={size}
-    variant={variant}
-    {...rest}
-  >
-    {children}
-  </ButtonStyled>
-)
+}) => {
+  const py = convertSize(size)
+  const buttonProps = { size, elevation, tag, py, children }
+  const Button = BUTTONS[variant]
+
+  return <Button {...buttonProps} {...rest} />
+}
 
 export default Button

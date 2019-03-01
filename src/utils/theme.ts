@@ -2,12 +2,16 @@ import { style, themeGet } from 'styled-system'
 import {
   Elevation,
   ThemeSize,
-  ThemeVariants,
   ColorEffects,
-  SizeMap
+  SizeMap,
+  ButtonVariants,
+  BaseThemeVariants
 } from '../types/theme'
 
-export function themeColors(value: ThemeVariants, effect: ColorEffects = '') {
+export function themeColors(
+  value: BaseThemeVariants & ButtonVariants,
+  effect: ColorEffects = ''
+) {
   return themeGet(`colors.${value}${effect}`)
 }
 
