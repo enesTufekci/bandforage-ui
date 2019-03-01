@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 
 import { Button } from '../index'
 
-storiesOf('Button', module).add('primary', () => (
-  <Button type="primary">Hello Button</Button>
-))
+storiesOf('Button', module)
+  .add('primary', () => <Button elevation={1}>Submit</Button>)
+  .add('secondary', () => <Button variant="secondary">Cancel</Button>)
+  .add('info', () => <Button variant="info">Info</Button>)

@@ -1,7 +1,9 @@
 import { themeGet } from 'styled-system'
 
-import { ThemeVariants } from '../../types/theme'
+import { ThemeVariants, ColorEffects } from '../../types/theme'
 
-export function themeColors(value: ThemeVariants) {
-  return themeGet(`colors.${value}`)
+function themeColors(value: ThemeVariants, effect: ColorEffects = '') {
+  return themeGet(`colors.${value}${effect}`)
 }
+
+export default themeColors

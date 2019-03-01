@@ -1,10 +1,11 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
+
 import { configure, addDecorator, setAddon } from '@storybook/react'
 import { withInfo, setDefaults } from '@storybook/addon-info'
 import { withKnobs } from '@storybook/addon-knobs/react'
 
-import theme from '../src/theme'
+import ThemeProvider from '../src/theme'
+import { createGlobalStyle } from 'styled-components'
 
 setDefaults({
   header: false, // Toggles display of header with component name and description
@@ -21,6 +22,27 @@ function loadStories() {
   req.keys().forEach(filename => req(filename))
 }
 
+const GlobalStyles = createGlobalStyle`
+  html {
+    font-size: 16px;
+  }
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+  }
+  * {
+    font-family: inherit;
+    font-size: inherit;
+  }
+`
+
 addDecorator(withKnobs)
-addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
+addDecorator(story => (
+  <ThemeProvider>
+    <React.Fragment>
+      {story()}
+      <GlobalStyles />
+    </React.Fragment>
+  </ThemeProvider>
+))
 configure(loadStories, module)
