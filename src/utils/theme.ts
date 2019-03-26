@@ -1,18 +1,14 @@
 import { style, themeGet } from 'styled-system'
 import {
-  Elevation,
   ThemeSize,
-  ColorEffects,
+  ColorTypes,
   SizeMap,
-  ButtonVariants,
-  BaseThemeVariants
+  ThemeColors,
+  ElevationLevel
 } from '../types/theme'
 
-export function themeColors(
-  value: BaseThemeVariants & ButtonVariants,
-  effect: ColorEffects = ''
-) {
-  return themeGet(`colors.${value}${effect}`)
+export function themeColors(color: ThemeColors, effect: ColorTypes = 'normal') {
+  return themeGet(`colors.${effect}.${color}`)
 }
 
 const sizeMap: SizeMap = {
@@ -29,14 +25,14 @@ export function convertSize(size: ThemeSize, multiplier: number = 1) {
 export const applyElevation = style({
   prop: 'elevation',
   cssProperty: 'box-shadow',
-  transformValue: (elevation: Elevation) => {
-    if (elevation === 0) {
-      return 'none'
-    }
+  transformValue: (elevation: ElevationLevel) => {
     if (elevation === 1) {
-      return '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);'
+      return '0 3px 6px 0px rgba(0, 0, 0, 0.24)'
     }
-    return '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);'
+    if (elevation === 2) {
+      return '0 3px 6px 0px rgba(0, 0, 0, 0.24)'
+    }
+    return 'none'
   }
 })
 

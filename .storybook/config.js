@@ -6,6 +6,12 @@ import { withKnobs } from '@storybook/addon-knobs/react'
 
 import ThemeProvider from '../src/theme'
 import { createGlobalStyle } from 'styled-components'
+import { select } from '@storybook/addon-knobs'
+
+import { addParameters } from '@storybook/react'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+
+addParameters({ viewport: { viewports: INITIAL_VIEWPORTS } })
 
 setDefaults({
   header: false, // Toggles display of header with component name and description
@@ -37,12 +43,15 @@ const GlobalStyles = createGlobalStyle`
 `
 
 addDecorator(withKnobs)
-addDecorator(story => (
-  <ThemeProvider>
-    <React.Fragment>
-      {story()}
-      <GlobalStyles />
-    </React.Fragment>
-  </ThemeProvider>
-))
+addDecorator(story => {
+  const content = story()
+  return (
+    <ThemeProvider mode={select('Mode', ['dark', 'light'], 'light')}>
+      <React.Fragment>
+        {content}
+        <GlobalStyles />
+      </React.Fragment>
+    </ThemeProvider>
+  )
+})
 configure(loadStories, module)

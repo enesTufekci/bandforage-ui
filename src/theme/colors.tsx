@@ -1,24 +1,40 @@
 import { darken, lighten } from 'polished'
+import { Colors, MainColors, ColorList } from '../types/theme'
 
-const main: { [key: string]: string } = {
-  primary: '#336B87',
-  info: '#336B87',
-  secondary: '#763626',
-  text: '#2A3132'
+const light: ColorList = {
+  primary: '#373737',
+  secondary: '#DCD0C0',
+  background: '#F4F4F4',
+  text: '#444444'
 }
 
-const darkened = Object.keys(main).reduce((acc, key) => {
-  return { ...acc, [`${key}Darkened`]: darken(0.05)(main[key]) }
-}, {})
+const dark: ColorList = {
+  secondary: '#373737',
+  primary: '#DCD0C0',
+  background: '#373737',
+  text: '#FFF'
+}
 
-const lightened = Object.keys(main).reduce((acc, key) => {
-  return { ...acc, [`${key}Lightened`]: lighten(0.05)(main[key]) }
-}, {})
+export const transformColors = (
+  transformFn: typeof darken | typeof lighten,
+  colorsToTransform: ColorList,
+  amount: string | number
+) =>
+  Object.keys(colorsToTransform).reduce((acc, color: MainColors) => {
+    return { ...acc, [color]: transformFn(amount)(colorsToTransform[color]) }
+  }, colorsToTransform)
 
-const colors = {
-  ...main,
-  ...darkened,
-  ...lightened
+const colors: Colors = {
+  dark: {
+    normal: dark,
+    darkened: transformColors(darken, dark, 0.05),
+    lightened: transformColors(lighten, dark, 0.05)
+  },
+  light: {
+    normal: light,
+    darkened: transformColors(darken, light, 0.05),
+    lightened: transformColors(lighten, light, 0.05)
+  }
 }
 
 export default colors

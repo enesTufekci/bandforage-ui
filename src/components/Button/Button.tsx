@@ -3,13 +3,18 @@ import styled from 'styled-components'
 import is from 'typescript-styled-is'
 import { space, SpaceProps, themeGet } from 'styled-system'
 import { themeColors, convertSize, applyElevation } from '../../utils/theme'
-import { ThemeSize, Elevation, ButtonVariants } from '../../types/theme'
+import {
+  ThemeSize,
+  ElevationLevel,
+  ButtonVariants,
+  ColorModes
+} from '../../types/theme'
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<{}>,
     SpaceProps {
   size: ThemeSize
-  elevation: Elevation
+  elevation: ElevationLevel
   tag: boolean
 }
 
@@ -25,9 +30,9 @@ const ButtonBase = styled.button<ButtonProps>`
   cursor: pointer;
   border: none;
   outline: none;
-  border-radius: 3px;
-  color: white;
-  transition: 0.3s;
+  border-radius: 10px;
+  color: ${themeColors('text')};
+  transition: 0.2s;
   &:active {
     box-shadow: none;
   }
@@ -35,21 +40,26 @@ const ButtonBase = styled.button<ButtonProps>`
 
 const PrimaryButton = styled(ButtonBase)`
   background-color: ${themeColors('primary')};
+  color: ${({ theme }) =>
+    (theme.mode as ColorModes) === 'dark'
+      ? themeColors('secondary')
+      : themeColors('background')};
   &:hover {
-    background-color: ${themeColors('primary', 'Darkened')};
+    background-color: ${themeColors('primary', 'darkened')};
   }
 `
 const SecondaryButton = styled(ButtonBase)`
   background-color: ${themeColors('secondary')};
   &:hover {
-    background-color: ${themeColors('secondary', 'Darkened')};
+    background-color: ${themeColors('secondary', 'darkened')};
   }
 `
 const InfoButton = styled(ButtonBase)`
   border: 2px solid ${themeColors('primary')};
   color: ${themeColors('primary')};
+  background-color: ${themeColors('background')}
   &:hover {
-    border: 2px solid ${themeColors('primary', 'Darkened')};
+    border: 2px solid ${themeColors('primary', 'darkened')};
   }
 `
 
@@ -57,9 +67,9 @@ const CleanButton = styled(ButtonBase)`
   border: none;
   background: none;
   box-shadow: none;
-  color: ${themeColors('primary')};
+  color: ${themeColors('text')};
   &:hover {
-    color: ${themeColors('primary', 'Darkened')};
+    color: ${themeColors('text', 'darkened')};
   }
 `
 
