@@ -1,8 +1,5 @@
 import * as React from 'react'
-import {
-  ThemeProvider as StyledThemeProvider,
-  DefaultTheme
-} from 'styled-components'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import colors from './colors'
 import { ColorModes } from '../types/theme'
 
