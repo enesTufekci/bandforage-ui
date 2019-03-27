@@ -17,10 +17,10 @@ const dark: ColorList = {
 
 export const transformColors = (
   transformFn: typeof darken | typeof lighten,
-  colorsToTransform: ColorList,
+  colorsToTransform: any,
   amount: string | number
 ) =>
-  Object.keys(colorsToTransform).reduce((acc, color: MainColors) => {
+  Object.keys(colorsToTransform).reduce((acc, color) => {
     return { ...acc, [color]: transformFn(amount)(colorsToTransform[color]) }
   }, colorsToTransform)
 

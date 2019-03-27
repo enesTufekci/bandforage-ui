@@ -25,12 +25,11 @@ export const theme = (mode: ColorModes): Theme => ({
   boxShadow: ['0 3px 6px 0px rgba(0, 0, 0, 0.16)']
 })
 
-const ThemeProvider: React.FC<{ themeOverrides: any; mode: ColorModes }> = ({
+const ThemeProvider: React.FC<{ theme?: any; mode: ColorModes }> = ({
   children,
-  themeOverrides,
+  theme: themeOverrides,
   mode
 }) => {
-  console.log(mode)
   return (
     <StyledThemeProvider theme={{ ...theme(mode), ...(themeOverrides as any) }}>
       {children as any}

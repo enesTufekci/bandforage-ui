@@ -25,7 +25,7 @@ export function convertSize(size: ThemeSize, multiplier: number = 1) {
 export const applyElevation = style({
   prop: 'elevation',
   cssProperty: 'box-shadow',
-  transformValue: (elevation: ElevationLevel) => {
+  transformValue: elevation => {
     if (elevation === 1) {
       return '0 3px 6px 0px rgba(0, 0, 0, 0.24)'
     }
