@@ -7,4 +7,6 @@ export * from './components/Input'
 export { default as Paper } from './components/Paper'
 export * from './components/Paper'
 
+export * from './utils/theme'
+
 export { default as ThemeProvider } from './theme'
