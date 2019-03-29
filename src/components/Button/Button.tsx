@@ -27,6 +27,10 @@ const ButtonBase = styled.button<ButtonProps>`
     min-width: auto;
     font-weight: 300;
   `}
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
   cursor: pointer;
   border: none;
   outline: none;
