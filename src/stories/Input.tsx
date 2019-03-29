@@ -8,7 +8,7 @@ const Row = styled.div`
   padding: 16px;
 `
 
-const InputContainer = () => {
+const InputContainer = ({ error = null }) => {
   const [value, setValue] = React.useState('')
   return (
     <Input
@@ -16,6 +16,7 @@ const InputContainer = () => {
       placeholder="Email Address"
       value={value}
       onChange={event => setValue(event.target.value)}
+      error={error}
       block
     />
   )
@@ -24,5 +25,11 @@ const InputContainer = () => {
 storiesOf('Input', module).add('text', () => (
   <StoryWrapper>
     <InputContainer />
+  </StoryWrapper>
+))
+
+storiesOf('Input', module).add('text with error', () => (
+  <StoryWrapper>
+    <InputContainer error="Is required!" />
   </StoryWrapper>
 ))

@@ -16,7 +16,7 @@ const InputContainer = styled.div`
   padding: 1rem 0;
 `
 
-const InputLabel = styled.label<{ active: boolean }>`
+const InputLabel = styled.label<{ active: boolean; hasError?: boolean }>`
   position: absolute;
   left: 10px;
   font-size: 0.75rem;
@@ -24,6 +24,9 @@ const InputLabel = styled.label<{ active: boolean }>`
   top: calc(50% - 0.6rem);
   font-weight: bold;
   letter-spacing: 0.5px;
+  ${is('hasError')`
+    color: ${themeColors('error')}
+  `}
   ${is('active')`
     top: 0;
     opacity: 1;
@@ -44,17 +47,25 @@ const InputStyled = styled.input<InputStyleProps>`
   color: ${themeColors('text')};
 `
 
-interface InputProps extends React.InputHTMLAttributes<any> {}
+interface InputProps extends React.InputHTMLAttributes<any> {
+  error: string
+}
 
 const Input: React.FC<InputProps & Partial<InputStyleProps>> = ({
   elevation = 1,
   block = false,
   ...rest
 }) => {
+  const { value, placeholder, error } = rest
   return (
     <InputContainer>
-      {rest.placeholder && (
-        <InputLabel active={!!rest.value}>{rest.placeholder}</InputLabel>
+      {placeholder && !error && (
+        <InputLabel active={!!value}>{placeholder}</InputLabel>
+      )}
+      {error && (
+        <InputLabel active hasError>
+          {error}
+        </InputLabel>
       )}
       <InputStyled {...rest} elevation={elevation} block={block} />
     </InputContainer>

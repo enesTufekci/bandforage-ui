@@ -5,14 +5,16 @@ const light: ColorList = {
   primary: '#373737',
   secondary: '#DCD0C0',
   background: '#F4F4F4',
-  text: '#444444'
+  text: '#444444',
+  error: '#F63D3A'
 }
 
 const dark: ColorList = {
   secondary: '#373737',
   primary: '#DCD0C0',
   background: '#373737',
-  text: '#FFF'
+  text: '#FFF',
+  error: '#F63D3A'
 }
 
 export const transformColors = (

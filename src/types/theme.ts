@@ -1,4 +1,9 @@
-export type MainColors = 'primary' | 'secondary' | 'text' | 'background'
+export type MainColors =
+  | 'primary'
+  | 'secondary'
+  | 'text'
+  | 'background'
+  | 'error'
 export type ThemeColors = MainColors
 export type ColorModes = 'light' | 'dark'
 export type ColorTypes = 'normal' | 'darkened' | 'lightened'
