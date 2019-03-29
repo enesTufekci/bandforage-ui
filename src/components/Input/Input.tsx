@@ -48,7 +48,7 @@ const InputStyled = styled.input<InputStyleProps>`
 `
 
 interface InputProps extends React.InputHTMLAttributes<any> {
-  error: string
+  error?: string
 }
 
 const Input: React.FC<InputProps & Partial<InputStyleProps>> = ({
