@@ -10,8 +10,8 @@ const light: ColorList = {
 }
 
 const dark: ColorList = {
-  secondary: '#373737',
   primary: '#F4F4F4',
+  secondary: '#373737',
   background: '#373737',
   text: '#FFF',
   error: '#F63D3A'
