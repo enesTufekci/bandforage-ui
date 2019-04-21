@@ -15,7 +15,7 @@ const Row = styled.div`
 storiesOf('Button', module).add('variants', () => (
   <React.Fragment>
     <StoryWrapper>
-      <Button disabled>Primary</Button>
+      <Button>Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="info">Info</Button>
       <Button variant="clean">Clean</Button>
