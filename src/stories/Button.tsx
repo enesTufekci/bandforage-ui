@@ -17,7 +17,6 @@ storiesOf('Button', module).add('variants', () => (
     <StoryWrapper>
       <Button>Primary</Button>
       <Button variant="secondary">Secondary</Button>
-      <Button variant="info">Info</Button>
       <Button variant="clean">Clean</Button>
     </StoryWrapper>
   </React.Fragment>

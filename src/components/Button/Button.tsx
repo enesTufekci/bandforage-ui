@@ -52,13 +52,8 @@ const PrimaryButton = styled(ButtonBase)`
     background-color: ${themeColors('primary', 'darkened')};
   }
 `
+
 const SecondaryButton = styled(ButtonBase)`
-  background-color: ${themeColors('secondary')};
-  &:hover {
-    background-color: ${themeColors('secondary', 'darkened')};
-  }
-`
-const InfoButton = styled(ButtonBase)`
   border: 2px solid ${themeColors('primary')};
   color: ${themeColors('primary')};
   background-color: ${themeColors('background')}
@@ -80,7 +75,6 @@ const CleanButton = styled(ButtonBase)`
 const BUTTONS: { [key in ButtonVariants]: React.ReactType } = {
   ['primary']: PrimaryButton,
   ['secondary']: SecondaryButton,
-  ['info']: InfoButton,
   ['clean']: CleanButton
 }
 
