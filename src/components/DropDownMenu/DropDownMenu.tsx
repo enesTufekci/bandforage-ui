@@ -22,7 +22,7 @@ const ClickAway = styled.div<{ show: boolean }>`
   `};
 `
 
-const Items = styled.ul<{ isOpen: boolean }>`
+export const Items = styled.ul`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -43,26 +43,21 @@ const Items = styled.ul<{ isOpen: boolean }>`
 
 Items.displayName = 'DropDownMenuItems'
 
-const Item = styled.li`
+export const Item = styled.li`
   min-width: 100px;
   padding: ${themeGet('space.2')};
   color: ${themeColors('text')};
 `
 
-const Divider = styled.li``
+export const Divider = styled.li``
 
-const Anchor = styled.div``
+export const Anchor = styled.div``
 
 Anchor.displayName = 'DropDownMenuAnchor'
 
 export interface DropDownMenuProps {}
 
-const DropDownMenu: React.FC<DropDownMenuProps> & {
-  Items: React.FC
-  Item: React.FC
-  Divider: React.FC
-  Anchor: React.FC
-} = ({ children, anchorEl }) => {
+const DropDownMenu: React.FC<DropDownMenuProps> = ({ children }) => {
   const [open, setOpen] = React.useState(false)
   const [anchorTop, setAnchorTop] = React.useState(0)
   const [anchorLeft, setAnchorLeft] = React.useState(0)
@@ -71,20 +66,20 @@ const DropDownMenu: React.FC<DropDownMenuProps> & {
     setOpen(!open)
   }
   const _children = React.Children.map(children, child => {
-    if (child.type.displayName === 'DropDownMenuAnchor') {
+    if (child && (child as any).type.displayName === 'DropDownMenuAnchor') {
       return {
-        ...child,
+        ...(child as any),
         props: {
-          ...child.props,
+          ...(child as any).props,
           onClick: handleToggle
         }
       }
     }
-    if (child.type.displayName === 'DropDownMenuItems') {
+    if (child && (child as any).type.displayName === 'DropDownMenuItems') {
       return {
-        ...child,
+        ...(child as any),
         props: {
-          ...child.props,
+          ...(child as any).props,
           isOpen: open
         }
       }
@@ -98,10 +93,5 @@ const DropDownMenu: React.FC<DropDownMenuProps> & {
     </Container>
   )
 }
-
-DropDownMenu.Item = Item
-DropDownMenu.Items = Items
-DropDownMenu.Divider = Divider
-DropDownMenu.Anchor = Anchor
 
 export default DropDownMenu
