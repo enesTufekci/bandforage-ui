@@ -22,6 +22,9 @@ export * from './components/Container'
 export { default as DropDownMenu } from './components/DropDownMenu'
 export * from './components/DropDownMenu'
 
+export { default as Avatar } from './components/Avatar'
+export * from './components/Avatar'
+
 export * from './utils/theme'
 
 export { default as ThemeProvider } from './theme'
