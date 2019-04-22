@@ -12,7 +12,7 @@ const Row = styled.div`
   margin: 32px 0;
 `
 
-storiesOf('Button', module).add('variants', () => (
+storiesOf('Components', module).add('Button', () => (
   <React.Fragment>
     <StoryWrapper>
       <Button>Primary</Button>

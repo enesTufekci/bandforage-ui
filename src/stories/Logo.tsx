@@ -7,4 +7,4 @@ const Row = styled.div`
   padding: 16px;
 `
 
-storiesOf('Logo', module).add('basic', () => <Logo />)
+storiesOf('Assets', module).add('Logo', () => <Logo />)

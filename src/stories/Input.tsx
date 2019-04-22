@@ -22,14 +22,13 @@ const InputContainer = ({ error = null }) => {
   )
 }
 
-storiesOf('Input', module).add('text', () => (
-  <StoryWrapper>
-    <InputContainer />
-  </StoryWrapper>
-))
-
-storiesOf('Input', module).add('text with error', () => (
-  <StoryWrapper>
-    <InputContainer error="Is required!" />
-  </StoryWrapper>
+storiesOf('Components', module).add('Input', () => (
+  <div>
+    <StoryWrapper>
+      <InputContainer />
+    </StoryWrapper>
+    <StoryWrapper>
+      <InputContainer error="Is required!" />
+    </StoryWrapper>
+  </div>
 ))

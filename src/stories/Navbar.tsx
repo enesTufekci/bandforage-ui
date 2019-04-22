@@ -7,4 +7,4 @@ const Row = styled.div`
   padding: 16px;
 `
 
-storiesOf('Navbar', module).add('basic', () => <Navbar />)
+storiesOf('Components', module).add('Navbar', () => <Navbar />)

@@ -7,7 +7,7 @@ const Row = styled.div`
   padding: 16px;
 `
 
-storiesOf('Paper', module).add('basic', () => (
+storiesOf('Components', module).add('Paper', () => (
   <Row>
     <Paper>
       <article style={{ padding: '16px' }}>
