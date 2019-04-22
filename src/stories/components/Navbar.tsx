@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
-import { Navbar, NavItem, A } from '../../index'
+import { Navbar, NavItem, A, DropDownMenu, Button } from '../../index'
 
 const Row = styled.div`
   padding: 16px;
@@ -13,10 +13,19 @@ storiesOf('Components', module).add('Navbar', () => (
       <A href="#">Manifest</A>
     </NavItem>
     <NavItem>
-      <A href="#">Sign In</A>
+      <A href="#">Link</A>
     </NavItem>
     <NavItem>
-      <A href="#">Sign Up</A>
+      <DropDownMenu>
+        <DropDownMenu.Anchor>
+          <A>Dropdown</A>
+        </DropDownMenu.Anchor>
+        <DropDownMenu.Items>
+          <DropDownMenu.Item>Item 1</DropDownMenu.Item>
+          <DropDownMenu.Item>Item 2</DropDownMenu.Item>
+          <DropDownMenu.Item>Item 3</DropDownMenu.Item>
+        </DropDownMenu.Items>
+      </DropDownMenu>
     </NavItem>
   </Navbar>
 ))

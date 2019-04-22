@@ -19,6 +19,9 @@ export * from './components/A'
 export { default as Container } from './components/Container'
 export * from './components/Container'
 
+export { default as DropDownMenu } from './components/DropDownMenu'
+export * from './components/DropDownMenu'
+
 export * from './utils/theme'
 
 export { default as ThemeProvider } from './theme'
