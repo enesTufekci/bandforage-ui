@@ -7,6 +7,7 @@ const AStyled = styled.a`
   color: ${themeColors('primary')};
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
 `
 
 interface AProps {
