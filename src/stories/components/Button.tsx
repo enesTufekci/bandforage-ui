@@ -2,8 +2,8 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
 
-import { Button } from '../index'
-import StoryWrapper from '../components/utils/storybook'
+import { Button } from '../../index'
+import StoryWrapper from '../../components/utils/storybook'
 
 const Row = styled.div`
   width: 100%;

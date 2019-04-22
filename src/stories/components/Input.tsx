@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
-import StoryWrapper from '../components/utils/storybook'
-import { Input } from '../index'
+import StoryWrapper from '../../components/utils/storybook'
+import { Input } from '../../index'
 
 const Row = styled.div`
   padding: 16px;
