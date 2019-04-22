@@ -3,12 +3,15 @@ import styled from 'styled-components'
 import Logo from '../Logo'
 import { themeGet } from 'styled-system'
 import A from '../A'
+import Container from '../Container'
 
 const NavStyled = styled.nav`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 84px;
+  ${Container} {
+    height: 84px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 `
 
 const NavbarLogoContainer = styled.div``
@@ -30,12 +33,14 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ children, logoHref = '/' }) => {
   return (
     <NavStyled>
-      <NavbarLogoContainer>
-        <A href={logoHref}>
-          <Logo />
-        </A>
-      </NavbarLogoContainer>
-      <NavItemsContainer>{children}</NavItemsContainer>
+      <Container>
+        <NavbarLogoContainer>
+          <A href={logoHref}>
+            <Logo />
+          </A>
+        </NavbarLogoContainer>
+        <NavItemsContainer>{children}</NavItemsContainer>
+      </Container>
     </NavStyled>
   )
 }

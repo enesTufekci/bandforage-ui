@@ -16,6 +16,9 @@ export * from './components/Logo'
 export { default as A } from './components/A'
 export * from './components/A'
 
+export { default as Container } from './components/Container'
+export * from './components/Container'
+
 export * from './utils/theme'
 
 export { default as ThemeProvider } from './theme'
