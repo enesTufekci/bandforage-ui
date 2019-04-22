@@ -1,8 +1,11 @@
 import styled from 'styled-components'
+import { themeGet } from 'styled-system'
+
+const contentWidth = themeGet('contentWidth')
 
 const Container = styled.div`
-  max-width: 1280px;
-  width: 1280px;
+  max-width: ${contentWidth};
+  width: ${contentWidth};
   margin: 0 auto;
 `
 

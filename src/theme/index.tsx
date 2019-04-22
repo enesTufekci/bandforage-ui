@@ -10,6 +10,7 @@ export interface Theme {
 
 export const theme = (mode: ColorModes): Theme => ({
   mode,
+  contentWidth: '1280px',
   colors: colors[mode],
   fontSizes: [
     '0.75rem',
