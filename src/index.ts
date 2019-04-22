@@ -13,6 +13,9 @@ export * from './components/Navbar'
 export { default as Logo } from './components/Logo'
 export * from './components/Logo'
 
+export { default as A } from './components/A'
+export * from './components/A'
+
 export * from './utils/theme'
 
 export { default as ThemeProvider } from './theme'
