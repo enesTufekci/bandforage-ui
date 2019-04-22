@@ -20,6 +20,7 @@ const NavItemsContainer = styled.div`
   flex-grow: 2;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `
 
 export const NavItem = styled.div`
