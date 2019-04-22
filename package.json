@@ -23,6 +23,10 @@
     "build:ts": "tsc --emitDeclarationOnly --skipLibCheck",
     "build": "rollup -c",
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "prepublish": "npm run build",
+    "publish:major": "npm publish major",
+    "publish:minor": "npm publish minor",
+    "publish:patch": "npm publish patch",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "keywords": [],
