@@ -12,6 +12,22 @@ export default [
     plugins: [
       typescript({
         typescript: require('typescript')
+      }),
+      reactSvg({
+        // svgo options
+        svgo: {
+          plugins: [], // passed to svgo
+          multipass: true
+        },
+
+        // whether to output jsx
+        jsx: false,
+
+        // include: string
+        include: null,
+
+        // exclude: string
+        exclude: null
       })
       // uglify()
     ],
