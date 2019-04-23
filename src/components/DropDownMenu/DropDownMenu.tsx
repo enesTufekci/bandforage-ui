@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { themeGet } from 'styled-system'
 import is from 'typescript-styled-is'
 
-import { themeColors } from '../../utils/theme'
+import { themeColors, applyElevation } from '../../utils/theme'
 
 const Container = styled.div`
   position: relative;
@@ -23,6 +23,7 @@ const ClickAway = styled.div<{ show: boolean }>`
 `
 
 export const Items = styled.ul`
+  ${applyElevation};
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -80,7 +81,8 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ children }) => {
         ...(child as any),
         props: {
           ...(child as any).props,
-          isOpen: open
+          isOpen: open,
+          elevation: 1
         }
       }
     }
