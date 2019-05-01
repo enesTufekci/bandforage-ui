@@ -74,6 +74,7 @@
     "styled-system": "^4.0.1"
   },
   "dependencies": {
+    "@types/googlemaps": "^3.30.19",
     "polished": "^3.0.0",
     "styled-components": "^4",
     "styled-system": "^4.0.1",
