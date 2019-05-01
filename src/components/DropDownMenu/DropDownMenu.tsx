@@ -42,7 +42,7 @@ export const Items = styled.ul`
 
 Items.displayName = 'DropDownMenuItems'
 
-export const Item = styled.li`
+const ItemWrapper = styled.li`
   min-width: max-content;
   color: ${themeColors('text')};
   transition: 200ms;
@@ -51,7 +51,17 @@ export const Item = styled.li`
   &:hover {
     background-color: ${themeColors('background', 'darkened')};
   }
+  > :first-child {
+    min-width: 125px;
+    max-width: 225px;
+  }
 `
+
+export const Item: React.FC = ({ children, ...rest }) => (
+  <ItemWrapper {...rest}>
+    <div>{children}</div>
+  </ItemWrapper>
+)
 
 export const Divider = styled.li``
 
