@@ -20,9 +20,18 @@ storiesOf('Components', module).add('DropDownMenu', () => (
         <Button>Click Me</Button>
       </DropDownMenu.Anchor>
       <DropDownMenu.Items>
-        <DropDownMenu.Item>Item 1</DropDownMenu.Item>
-        <DropDownMenu.Item>Item 2</DropDownMenu.Item>
-        <DropDownMenu.Item>Item 3</DropDownMenu.Item>
+        <DropDownMenu.Item>
+          <div>Item 1 With a long name and without break</div>
+        </DropDownMenu.Item>
+        <DropDownMenu.Item>
+          <div>
+            Item 1 With a long name and <br /> with break
+          </div>
+        </DropDownMenu.Item>
+        <DropDownMenu.Item>
+          {' '}
+          <div>Item 3</div>
+        </DropDownMenu.Item>
       </DropDownMenu.Items>
     </DropDownMenu>
   </Container>

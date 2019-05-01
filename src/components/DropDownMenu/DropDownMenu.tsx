@@ -24,15 +24,12 @@ const ClickAway = styled.div<{ show: boolean }>`
 
 export const Items = styled.ul`
   ${applyElevation};
-  display: flex;
-  flex-direction: column;
   position: absolute;
   z-index: 1;
   display: none;
   list-style: none;
   margin-top: ${themeGet('space.1')};
   padding: 0;
-  min-width: 128px;
   right: 0;
   ${is('isOpen')`
     display: block;
@@ -40,14 +37,20 @@ export const Items = styled.ul`
   border: 2px solid ${themeColors('primary')};
   border-radius: 5px;
   background-color: ${themeColors('background')};
+  width: max-content;
 `
 
 Items.displayName = 'DropDownMenuItems'
 
 export const Item = styled.li`
-  min-width: 100px;
-  padding: ${themeGet('space.2')};
+  min-width: max-content;
   color: ${themeColors('text')};
+  transition: 200ms;
+  padding: ${themeGet('space.2')};
+  cursor: pointer;
+  &:hover {
+    background-color: ${themeColors('background', 'darkened')};
+  }
 `
 
 export const Divider = styled.li``
