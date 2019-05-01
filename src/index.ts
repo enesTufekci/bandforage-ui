@@ -25,6 +25,12 @@ export * from './components/DropDownMenu'
 export { default as Avatar } from './components/Avatar'
 export * from './components/Avatar'
 
+export { default as LocationInput } from './components/LocationInput'
+export * from './components/LocationInput'
+
+export { default as SearchAutoComplete } from './components/SearchAutoComplete'
+export * from './components/SearchAutoComplete'
+
 export * from './utils/theme'
 
 export { default as ThemeProvider } from './theme'
